@@ -24,4 +24,9 @@ jobs:
         ssh_key: ${{ secrets.PANTHEON_SSH_KEY }}
         machine_token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
         site: ${{ vars.PANTHEON_SITE }}
+        # New commits on the main branch usually mean a pull request
+        # has been merged. Setting this parameter to true will
+        # prompt this Action to loop through all Multidev environments
+        # and check if they are associated with closed pull requests.
+        # Multidevs associated with closed pull requests get deleted.
         delete_old_environments: true
