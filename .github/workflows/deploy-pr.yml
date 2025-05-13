@@ -1,0 +1,31 @@
+name: Deploy Pull Request to Pantheon
+
+permissions:
+  deployments: write
+  contents: read
+  pull-requests: read
+
+# Only one workflow can run at a time for a given pull request.
+# If a new workflows are queued, they wait for the one in progress to complete
+# before jumping to the most recently triggered workflow.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+# This workflow is triggered when a pull request is opened
+# or receives a new commit.
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  push-to-pantheon:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Push to Pantheon
+      uses: pantheon-systems/push-to-pantheon@0.5.0
+      with:
+        ssh_key: ${{ secrets.PANTHEON_SSH_KEY }}
+        machine_token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+        site: ${{ vars.PANTHEON_SITE }}
