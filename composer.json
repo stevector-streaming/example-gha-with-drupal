@@ -1,6 +1,6 @@
 {
-    "name": "pantheon-upstreams/drupal-composer-managed",
-    "description": "Install Drupal 9 with Composer on Pantheon.",
+    "name": " stevector-streaming/example-gha-with-drupal,
+    "description": "A basic example of Drupal being deployed to Pantheon via GitHub Actions",
     "type": "project",
     "license": "MIT",
     "repositories": [
