@@ -22,6 +22,8 @@ jobs:
       uses: pantheon-systems/push-to-pantheon@0.5.0
       with:
         ssh_key: ${{ secrets.PANTHEON_SSH_KEY }}
+        # Learn how to generated a token here:
+        # https://docs.pantheon.io/machine-tokens
         machine_token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
         site: ${{ vars.PANTHEON_SITE }}
         # New commits on the main branch usually mean a pull request
