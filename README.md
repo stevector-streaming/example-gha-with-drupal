@@ -7,7 +7,6 @@ You can copy this repository by running `terminus build:project:create` from our
 terminus build:project:create todo, todo
 ```
 
-
 All of the Drupal code in this repository is derrived from https://github.com/pantheon-upstreams/drupal-composer-managed
 
-This repository exists to show the contents of it's `.github/workflows/deploy.yml` file, which is a GitHub Action workflow that automates the deployment of a Drupal site to Pantheon.
+This repository exists to show the contents of its [`.github/workflows/deploy-pr.yml`](.github/workflows/deploy-pr.yml) and [`.github/workflows/deploy-main.yml`](.github/workflows/deploy-main.yml) files which are basic usages of the [Push to Pantheon Action](https://github.com/pantheon-systems/push-to-pantheon).
