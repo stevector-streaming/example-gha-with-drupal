@@ -1,5 +1,5 @@
 {
-    "name": " stevector-streaming/example-gha-with-drupal,
+    "name": "stevector-streaming/example-gha-with-drupal",
     "description": "A basic example of Drupal being deployed to Pantheon via GitHub Actions",
     "type": "project",
     "license": "MIT",
