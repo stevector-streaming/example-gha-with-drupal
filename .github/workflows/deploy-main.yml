@@ -1,0 +1,34 @@
+name: Deploy main branch to Pantheon
+
+concurrency:
+  group: ${{ github.workflow }}-main
+  cancel-in-progress: false
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    permissions:
+      deployments: write
+      contents: read
+      pull-requests: read
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Push to Pantheon
+      uses: pantheon-systems/push-to-pantheon@0.5.0
+      with:
+        ssh_key: ${{ secrets.PANTHEON_SSH_KEY }}
+        # Learn how to generated a token here:
+        # https://docs.pantheon.io/machine-tokens
+        machine_token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+        site: ${{ vars.PANTHEON_SITE }}
+        # New commits on the main branch usually mean a pull request
+        # has been merged. Setting this parameter to true will
+        # prompt this Action to loop through all Multidev environments
+        # and check if they are associated with closed pull requests.
+        # Multidevs associated with closed pull requests get deleted.
+        delete_old_environments: true
